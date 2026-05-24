@@ -1,4 +1,4 @@
-# Clean code — finite-size convergence of mobility-based resilience
+# Finite-size Convergence of Mobility-based Resilience
 
 The paper introduces a measurement-independent test for whether a
 resilience study's **observation window** is large enough to represent the
