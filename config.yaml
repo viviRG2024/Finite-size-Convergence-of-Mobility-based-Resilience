@@ -1,0 +1,118 @@
+# Configuration for the clean reproduction pipeline.
+# Cities, parameters, and analysis settings.
+
+# ---------------------------------------------------------------------------
+# Cities and dates
+# ---------------------------------------------------------------------------
+# Each city points to a directory under data/input/ containing
+# `result_traffic_flow_hourly_YYYY_MM_DD.geojson` files.
+# `target_crs` is the metric CRS used for grid construction. If null, an
+# appropriate UTM zone is auto-detected from the network centroid.
+
+cities:
+  london:
+    target_crs: EPSG:27700      # British National Grid
+    dates:
+      - "2015_05_18"
+      - "2015_05_19"
+      - "2015_05_20"
+      - "2015_05_21"
+      - "2015_05_22"
+  melbourne:
+    target_crs: null            # auto-detected (UTM 55S)
+    dates: null                 # null = use all dates found on disk
+  losangeles:
+    target_crs: null            # auto-detected (UTM 11N)
+    dates: null
+
+# ---------------------------------------------------------------------------
+# Multi-scale analysis parameters
+# ---------------------------------------------------------------------------
+# Spatial grid sizes (in metres). 39 logarithmically-spaced scales between
+# 10 m and 10 000 m, matching the published IUTFD pipeline.
+grid_sizes:
+  - 10
+  - 50
+  - 100
+  - 150
+  - 200
+  - 250
+  - 300
+  - 350
+  - 400
+  - 450
+  - 500
+  - 550
+  - 600
+  - 650
+  - 700
+  - 750
+  - 800
+  - 850
+  - 900
+  - 950
+  - 1000
+  - 1500
+  - 2000
+  - 2500
+  - 3000
+  - 3500
+  - 4000
+  - 4500
+  - 5000
+  - 5500
+  - 6000
+  - 6500
+  - 7000
+  - 7500
+  - 8000
+  - 8500
+  - 9000
+  - 9500
+  - 10000
+
+# Network construction
+connectivity: "8"               # 4- or 8-connected grid neighbours
+edge_weight_method: geometric   # one of: min | mean | geometric
+entropy_type: structural        # one of: structural | flow
+
+# Modal split weights (used when input has per-mode flow_*; ignored for
+# IUTFD which provides aggregated flow_0..flow_23 directly).
+modal_weights:
+  car: 0.69
+  bus: 0.05
+  cycle: 0.02
+  walk: 0.24
+
+# ---------------------------------------------------------------------------
+# Nested windows
+# ---------------------------------------------------------------------------
+# Each window is a square sub-region centred on the network centroid.
+# Scale factor 1.0 = full network bbox, 0.1 = 10% along each axis (1% area).
+window_scale_factors: [0.1, 0.2, 0.4, 0.6, 0.8, 1.0]
+
+# ---------------------------------------------------------------------------
+# Scaling-law fit
+# ---------------------------------------------------------------------------
+# Local linear fit in log-log space, restricted to L in [fit_min, fit_max] m.
+# `max_valid_l_factor` caps the upper end of the fit at win_min_dim * factor
+# to avoid grid-boundary artefacts (matches `local_lc400_[200-1200m]`).
+fit_min_l: 200
+fit_max_l: 1200
+max_valid_l_factor: 0.25
+min_points_local: 4
+
+# Workday hours: alpha/beta are computed per (date, window, hour) and then
+# aggregated over these hours.
+workday_hours: [8, 9, 10, 11, 12, 13, 14, 15]
+
+# Converged-window range used for cross-city aggregation
+# (windows 2-5 = SF >= 0.4, per the published methodology).
+converged_window_indices: [2, 3, 4, 5]
+
+# ---------------------------------------------------------------------------
+# Statistical tests
+# ---------------------------------------------------------------------------
+n_bootstrap: 1000
+n_permutations: 1000
+random_seed: 42
