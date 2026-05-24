@@ -1,11 +1,4 @@
-# Clean reproduction code — finite-size convergence of mobility-based resilience
-
-This package reproduces the converged scaling exponents reported in **Table 2**
-of:
-
-> Lin, Lu, Batty, Mitoulis, Meng, Zhang, Chen.
-> *Urban resilience quantification stabilises beyond a critical observation
-> window.* (Nature Communications, submitted.)
+# Clean code — finite-size convergence of mobility-based resilience
 
 The paper introduces a measurement-independent test for whether a
 resilience study's **observation window** is large enough to represent the
