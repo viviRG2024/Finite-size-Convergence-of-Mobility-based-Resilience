@@ -5,5 +5,5 @@ __pycache__/
 *.tmp
 CLAUDE.md
 paper.txt
-/data/input
+*.geojson
 /results
