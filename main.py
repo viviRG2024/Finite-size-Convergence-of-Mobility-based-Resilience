@@ -84,6 +84,16 @@ def stats_path(out_root: Path, city: str, window_idx: int, date_str: str) -> Pat
     return out_root / city / "stats" / f"window{window_idx}" / f"{city}_{date_str}.json"
 
 
+def diag_window_path(out_root: Path, city: str, window_idx: int,
+                     date_str: str) -> Path:
+    return (out_root / city / "diagnostics" / f"window{window_idx}"
+            / f"{city}_{date_str}.png")
+
+
+def diag_city_path(out_root: Path, city: str) -> Path:
+    return out_root / city / "diagnostics" / f"{city}_convergence_heatmap.png"
+
+
 # ---------------------------------------------------------------------------
 # Stage 1: discover dates and build per-city windows
 # ---------------------------------------------------------------------------
@@ -145,13 +155,20 @@ def stage_load(cfg: dict, cities: list, in_root: Path, out_root: Path,
 # Stage 2: multi-scale CV and H per (city, date, window)
 # ---------------------------------------------------------------------------
 
-def stage_compute(cfg: dict, ctx: dict, out_root: Path, force: bool = False) -> None:
+def stage_compute(cfg: dict, ctx: dict, out_root: Path, force: bool = False,
+                  viz: bool = False) -> None:
     """Compute and persist CV(L), H(L) for every (date, window)."""
     grid_sizes = cfg["grid_sizes"]
     connectivity = cfg["connectivity"]
     edge_method = cfg["edge_weight_method"]
     entropy_type = cfg["entropy_type"]
     modal_weights = cfg["modal_weights"]
+    fit_min = cfg["fit_min_l"]
+    fit_max = cfg["fit_max_l"]
+    factor = cfg["max_valid_l_factor"]
+
+    if viz:
+        from src.viz import plot_window_diagnostics
 
     for city, info in ctx.items():
         for date_str in info["dates"]:
@@ -165,29 +182,50 @@ def stage_compute(cfg: dict, ctx: dict, out_root: Path, force: bool = False) -> 
 
             for w_idx, bbox in enumerate(info["windows"]):
                 out = multi_scale_path(out_root, city, w_idx, date_str)
+                ms = None
                 if out.exists() and not force:
-                    continue
-                segs = clip_segments_to_bbox(segments_full, bbox)
-                if len(segs) < 10:
-                    dump_json({"skipped": True, "reason": "too few segments",
-                               "n_segments": len(segs), "window_idx": w_idx,
-                               "bbox": list(bbox)}, out)
-                    continue
-                ms = analyse_multi_scale(
-                    segs, bbox, grid_sizes,
-                    connectivity=connectivity,
-                    edge_weight_method=edge_method,
-                    entropy_type=entropy_type,
-                    progress=False,
-                )
-                ms["city"] = city
-                ms["date"] = date_str
-                ms["window_idx"] = w_idx
-                ms["bbox"] = list(bbox)
-                ms["n_segments"] = len(segs)
-                # Drop bulky scale_results to keep JSON small.
-                ms.pop("scale_results", None)
-                dump_json(ms, out)
+                    if viz:
+                        ms = load_json(out)
+                        if ms.get("skipped"):
+                            continue
+                    else:
+                        continue
+                if ms is None:
+                    segs = clip_segments_to_bbox(segments_full, bbox)
+                    if len(segs) < 10:
+                        dump_json({"skipped": True,
+                                   "reason": "too few segments",
+                                   "n_segments": len(segs),
+                                   "window_idx": w_idx,
+                                   "bbox": list(bbox)}, out)
+                        continue
+                    ms = analyse_multi_scale(
+                        segs, bbox, grid_sizes,
+                        connectivity=connectivity,
+                        edge_weight_method=edge_method,
+                        entropy_type=entropy_type,
+                        progress=False,
+                    )
+                    ms["city"] = city
+                    ms["date"] = date_str
+                    ms["window_idx"] = w_idx
+                    ms["bbox"] = list(bbox)
+                    ms["n_segments"] = len(segs)
+                    # Drop bulky scale_results to keep JSON small.
+                    ms.pop("scale_results", None)
+                    dump_json(ms, out)
+                else:
+                    segs = clip_segments_to_bbox(segments_full, bbox)
+                if viz and len(segs) >= 10:
+                    win_min_dim = min(bbox[2] - bbox[0], bbox[3] - bbox[1])
+                    plot_window_diagnostics(
+                        segments=segs, bbox=bbox, ms=ms,
+                        city=city, date_str=date_str, window_idx=w_idx,
+                        fit_min_l=fit_min, fit_max_l=fit_max,
+                        max_valid_l=factor * win_min_dim,
+                        out_path=diag_window_path(out_root, city, w_idx,
+                                                  date_str),
+                    )
             print(f"  done in {time.time() - t0:.1f}s", flush=True)
 
 
@@ -195,13 +233,17 @@ def stage_compute(cfg: dict, ctx: dict, out_root: Path, force: bool = False) -> 
 # Stage 3: alpha, beta fits per (city, date, window, hour)
 # ---------------------------------------------------------------------------
 
-def stage_fit(cfg: dict, ctx: dict, out_root: Path, force: bool = False) -> None:
+def stage_fit(cfg: dict, ctx: dict, out_root: Path, force: bool = False,
+              viz: bool = False) -> None:
     """Fit local power laws to CV(L) and H(L) for each (date, window)."""
     fit_min = cfg["fit_min_l"]
     fit_max = cfg["fit_max_l"]
     factor = cfg["max_valid_l_factor"]
     min_pts = cfg["min_points_local"]
     hours = cfg["workday_hours"]
+
+    if viz:
+        from src.viz import plot_city_convergence_heatmap
 
     for city, info in ctx.items():
         for date_str in info["dates"]:
@@ -229,6 +271,23 @@ def stage_fit(cfg: dict, ctx: dict, out_root: Path, force: bool = False) -> None
                     "max_valid_l": max_valid_l, "hours": list(hours),
                 })
                 dump_json(fits, out)
+
+        if viz:
+            fits_by_window_date: dict = {}
+            for date_str in info["dates"]:
+                for w_idx in range(len(info["windows"])):
+                    p = scaling_path(out_root, city, w_idx, date_str)
+                    if p.exists():
+                        fits_by_window_date[(w_idx, date_str)] = load_json(p)
+            if fits_by_window_date:
+                plot_city_convergence_heatmap(
+                    city=city,
+                    n_windows=len(info["windows"]),
+                    dates=list(info["dates"]),
+                    hours=list(hours),
+                    fits_by_window_date=fits_by_window_date,
+                    out_path=diag_city_path(out_root, city),
+                )
 
 
 # ---------------------------------------------------------------------------
@@ -372,6 +431,9 @@ def parse_args() -> argparse.Namespace:
                    help="skip the bootstrap / KS test stage in 'all'")
     p.add_argument("--force", action="store_true",
                    help="recompute outputs even if they already exist")
+    p.add_argument("--viz", action="store_true",
+                   help="also write per-window diagnostic PNGs and a per-city "
+                        "convergence heatmap into results/<city>/diagnostics/")
     return p.parse_args()
 
 
@@ -397,9 +459,11 @@ def main() -> int:
         return 0
 
     if args.stage in ("compute", "all"):
-        stage_compute(cfg, ctx, args.output_dir, force=args.force)
+        stage_compute(cfg, ctx, args.output_dir, force=args.force,
+                      viz=args.viz)
     if args.stage in ("fit", "all"):
-        stage_fit(cfg, ctx, args.output_dir, force=args.force)
+        stage_fit(cfg, ctx, args.output_dir, force=args.force,
+                  viz=args.viz)
     if args.stage == "all" and not args.no_tests:
         stage_tests(cfg, ctx, args.output_dir, force=args.force)
     if args.stage == "tests":

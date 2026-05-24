@@ -1,4 +1,4 @@
-# Finite-size Convergence of Mobility-based Resilience
+# Urban Resilience Quantification Stabilises Beyond a Critical Observation Window
 
 The paper introduces a measurement-independent test for whether a
 resilience study's **observation window** is large enough to represent the
