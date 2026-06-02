@@ -4,4 +4,5 @@ __pycache__/
 results/
 .pytest_cache/
 *.tmp
-/data
+/data/input/losangeles
+/data/input/melbourne
