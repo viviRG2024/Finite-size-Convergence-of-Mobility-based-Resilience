@@ -6,3 +6,4 @@ results/
 *.tmp
 /data/input/losangeles
 /data/input/melbourne
+/data/input/london
