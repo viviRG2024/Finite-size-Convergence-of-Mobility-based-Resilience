@@ -1,191 +1,212 @@
-# Urban Resilience Quantification Stabilises Beyond a Critical Observation Window
+# Finite-size Convergence of Mobility-based Resilience — reproduction code
 
-Reference implementation of the finite-size convergence framework
-introduced in the paper of the same title. The pipeline computes two
-diagnostic probes — flow heterogeneity `CV(L)` and network complexity
-`H(L)` — across nested observation windows and 39 spatial resolutions,
-fits the local scaling laws `CV(L) ~ L^α` and `H(L) ~ L^β`, and
-aggregates the exponents over the converged regime (SF ≥ 0.4) to produce
-the per-city values reported in Table 2 of the paper.
+This package reproduces the multi-scale scaling-law analysis
+(`CV(L) ~ L^alpha`, `H(L) ~ L^beta`) for three urban mobility networks:
+**London**, **Melbourne**, and **Los Angeles**.
 
-## Overview
+The repository is intentionally minimal: no figures, no diagnostics, just the
+end-to-end computation that yields the scaling exponents reported in the
+paper.
 
-Mobility-based urban resilience metrics — network-robustness measures,
-flow-recovery rates, accessibility-based vulnerability indices, and the
-indicator frameworks built on them — are always computed over an
-*observation window*: the spatial area the metric covers. Across the
-literature, that area varies by more than 300-fold, yet the field has had
-no quantitative criterion for when a window is large enough for a result
-to represent the city as a whole rather than the sub-region that happened
-to be sampled.
+- **Source repository:** https://github.com/viviRG2024/Finite-size-Convergence-of-Mobility-based-Resilience
+- **Data:** the full hourly traffic-flow GeoJSONs for all three cities are
+  included in this repository under `data/input/`. A small bundled subset for
+  the demo (a cropped slice of the Melbourne network, ~2.7 MB) lives in
+  `data/input/demo/`.
 
-The paper introduces a measurement-independent test built on two
-dimensionless probes that target the two informational dimensions
-mobility-based metrics ultimately depend on:
+## Layout
 
-- `CV(L)` — *flow heterogeneity*: coefficient of variation of hourly cell
-  flows; captures the spatial concentration of demand.
-- `H(L)` — *network complexity*: flow-weighted Shannon entropy of the
-  cell adjacency graph; captures the topological organisation of the
-  network.
+```
+clean_code/
+├── main.py                   # one-shot pipeline (load -> compute -> fit -> aggregate)
+├── config.yaml               # cities, scales, fit window, statistical params
+├── requirements.txt
+├── LICENSE                   # MIT
+├── src/
+│   ├── io/geojson_loader.py        # GeoJSON load + unified CRS handling
+│   ├── analysis/nested_windows.py  # SF in {0.1, 0.2, 0.4, 0.6, 0.8, 1.0}
+│   ├── analysis/multi_scale.py     # CV(L), H(L) over 39 spatial scales
+│   ├── analysis/scaling_fit.py     # local log-log fit, alpha and beta
+│   ├── analysis/statistical_tests.py  # bootstrap CI, permutation, KS
+│   └── utils/io.py                 # JSON helpers (numpy-aware)
+├── data/input/                # GeoJSON inputs (3 cities + demo subset)
+├── results/                   # written by main.py
+└── tests/test_pipeline.py     # one-minute smoke test
+```
 
-Power-law fits against the spatial resolution `L` yield exponents α and β.
-Applied to 34 cities of the Integrated Urban Traffic Flow Dataset (IUTFD),
-the framework locates a **finite-size convergence near SF ≈ 0.4** —
-roughly 40 % of the metropolitan area. Below this coverage, equally sized
-windows in the same city can produce divergent, sometimes opposite-sign,
-exponents; above it, the exponents stabilise and 34 cities collapse onto
-shared scaling curves.
+## System requirements
 
-This repository ships the per-city computation for **London**,
-**Melbourne**, and **Los Angeles** — the cities shown in Fig. 3a of the
-paper. The full 34-city analyses, position-dependence sweeps (Fig. 2),
-random-window validation (Fig. 3b), sensitivity surfaces (Fig. 3c), and
-cross-city collapse (Fig. 4) are documented in the paper and SI Appendix.
+### Software dependencies
 
-## What the pipeline computes
+- **Python ≥ 3.9** (tested on 3.12.7).
+- Python packages (see `requirements.txt`):
+  `numpy>=1.21`, `scipy>=1.7`, `pandas>=1.3`, `geopandas>=0.10`,
+  `shapely>=1.8`, `pyproj>=3.2`, `PyYAML>=5.4`.
+- `geopandas` depends on the GDAL/PROJ system libraries (pulled in
+  automatically by the conda route below).
 
-For each city × date × nested observation window
-(SF ∈ {0.1, 0.2, 0.4, 0.6, 0.8, 1.0}):
+### Versions the software has been tested on
 
-1. Tile the window with regular metric grids at side
-   `L ∈ {10, 50, …, 10 000} m` (39 logarithmically-spaced scales).
-2. At every hour `h`:
-   - `CV(L, h)` = std / mean of hourly flow across active cells (cells
-     with at least 10 segments and non-zero hourly flow).
-   - `H(L, h)` = flow-weighted Shannon entropy of the cell adjacency
-     graph, built under queen (8-) connectivity with geometric-mean edge
-     weights `w_ij = √(f_i × f_j)`.
-3. Fit the local power laws `CV(L) ~ L^α` and `H(L) ~ L^β` by OLS on
-   log–log axes over `L ∈ [200, 1200] m`, with the upper end of the fit
-   window capped at `0.25 × min(window dimensions)` to suppress
-   grid-boundary artefacts at small windows.
-4. Aggregate α and β over the **converged regime** (SF ≥ 0.4, i.e.
-   `window_idx ∈ {2, 3, 4, 5}`) and workday hours 08:00–15:59, yielding
-   the per-city median, inter-quartile range, and full range — the rows
-   of Table 2.
+| Component  | Tested version |
+|------------|----------------|
+| OS         | Windows 11 (also expected to run on Linux/macOS — pure-Python, no OS-specific code) |
+| Python     | 3.12.7 |
+| numpy      | 1.26.4 |
+| scipy      | 1.13.1 |
+| pandas     | 2.2.2  |
+| geopandas  | 1.1.1  |
+| shapely    | 2.1.1  |
+| pyproj     | 3.7.1  |
+| PyYAML     | 6.0.1  |
 
-## Quick start
+### Hardware
+
+No non-standard hardware is required. A standard desktop or laptop is
+sufficient; ~8 GB RAM is comfortable (the London GeoJSONs are ~60 MB each and
+are loaded fully into memory). The pipeline is single-threaded; you can run
+several cities in parallel by launching one process per `--city`.
+
+## Installation
 
 ```bash
 pip install -r requirements.txt
-# fetch the IUTFD GeoJSONs (see "Data") into data/input/
-python main.py                                # full pipeline, 3 cities
-python tests/test_pipeline.py                 # ~30 s smoke test
 ```
 
-`geopandas` requires the GDAL/PROJ system libraries; on Windows the
-easiest route is `conda install -c conda-forge geopandas`.
-
-## Data
-
-The per-city IUTFD GeoJSONs are too large for GitHub and are hosted on
-Google Drive:
-
-> <https://drive.google.com/drive/folders/1Fn56WWYJmytDhbST4YJr7R5zwaT_qq-P?usp=sharing>
-
-Download the three city folders and place them so the layout becomes:
-
-```
-data/input/
-├── london/      result_traffic_flow_hourly_YYYY_MM_DD.geojson
-├── melbourne/   result_traffic_flow_hourly_YYYY_MM_DD.geojson
-└── losangeles/  result_traffic_flow_hourly_YYYY_MM_DD.geojson
-```
-
-`main.py` discovers dates automatically from the filenames, so any subset
-of the per-city files is enough for a partial reproduction.
-
-The upstream IUTFD dataset and its full 34-city release are described in
-the dataset's own documentation, which the paper cites.
-
-## Repository layout
-
-```
-.
-├── main.py                            # 4-stage idempotent pipeline (load → compute → fit → aggregate)
-├── config.yaml                        # cities, scales, fit window, statistical params
-├── requirements.txt
-├── src/
-│   ├── io/geojson_loader.py           # IUTFD GeoJSON load + unified metric CRS
-│   ├── analysis/nested_windows.py     # nested windows at SF ∈ {0.1, 0.2, 0.4, 0.6, 0.8, 1.0}
-│   ├── analysis/multi_scale.py        # CV(L), H(L) over 39 spatial scales
-│   ├── analysis/scaling_fit.py        # local log-log fit, α and β
-│   ├── analysis/statistical_tests.py  # bootstrap CIs, permutation, KS
-│   ├── utils/io.py                    # numpy-aware JSON helpers
-│   └── viz/diagnostics.py             # opt-in process plots (--viz)
-├── data/input/                        # IUTFD GeoJSONs (download from Google Drive)
-├── results/                           # written by main.py
-└── tests/test_pipeline.py             # ~30 s smoke test
-```
-
-## Usage
-
-`main.py` runs four idempotent stages — `load → compute → fit → aggregate` —
-and writes one JSON per `(city, date, window)`. Each stage skips work whose
-output already exists unless `--force` is passed.
+On Windows the easiest way to satisfy `geopandas`'s GDAL/PROJ dependency is:
 
 ```bash
-python main.py                                       # full pipeline, all cities
-python main.py --city melbourne --stage compute      # only CV / H
-python main.py --city melbourne --stage fit          # only α / β
-python main.py --windows 2 3 4 5                     # restrict aggregation to the converged regime
-python main.py --hours 8 9 10 11 12 13 14 15         # override workday hours
-python main.py --no-tests                            # skip bootstrap / KS stage
-python main.py --force                               # recompute outputs that already exist
-python main.py --viz                                 # also write diagnostic PNGs (off by default)
+conda install -c conda-forge geopandas
+pip install -r requirements.txt   # the rest
 ```
 
-Stages can also be invoked individually with `--stage {load,compute,fit,tests,aggregate,all}`.
+**Typical install time on a normal desktop:** ~2–5 minutes via `pip` if
+wheels are available; ~5–15 minutes if conda has to resolve and build the
+GDAL/PROJ geospatial stack from scratch.
+
+## Demo
+
+A small bundled dataset (`data/input/demo/`, ~2.7 MB) runs the entire
+pipeline — load → multi-scale CV/H → α/β fits → aggregation — in seconds.
+
+```bash
+python main.py --city demo --no-tests
+```
+
+**Expected output.** The run prints a short progress log and writes
+`results/demo/...` plus a `demo` row in `results/cross_city_summary.csv`:
+
+```
+[load] demo: 1 dates, 6 windows, CRS=EPSG:32755
+[compute] demo 2018_02_12
+  loaded 4172 segments
+  done in ~13s
+[aggregate] wrote results/cross_city_summary.csv
+
+city,n_alpha,n_beta,alpha_median,...,beta_median,...
+demo,32,32,-0.122,...,-0.392,...
+```
+
+These values are deterministic (the α/β fits use no randomness; `--no-tests`
+skips the only stochastic stage). A single `ConstantInputWarning` may appear —
+it is harmless (one scale/hour on the small subset has a constant CV or H).
+
+**Expected run time for the demo:** under ~30 seconds on a normal laptop
+(~16 s observed).
+
+An even faster, assertion-checked sanity test (~30 s):
+
+```bash
+python tests/test_pipeline.py
+# OK: alpha_median=-0.346..., beta_median=-0.360...
+# Smoke test passed.
+```
+
+## Run (full reproduction)
+
+Full pipeline on the three study cities (6 nested windows, 39 scales, 8
+workday hours):
+
+```bash
+python main.py --city london --city melbourne --city losangeles
+```
+
+(`python main.py` with no `--city` also runs the small `demo` city.)
+The bootstrap/KS stage dominates the runtime; the whole reproduction takes on
+the order of a few hours single-threaded, or far less with `--no-tests`.
+
+Per-stage / per-city control:
+
+```bash
+python main.py --city melbourne --stage compute      # only CV/H
+python main.py --city melbourne --stage fit          # only alpha/beta
+python main.py --windows 2 3 4 5                     # restrict aggregation
+python main.py --no-tests                            # skip bootstrap stage
+python main.py --force                               # recompute everything
+```
+
+## Use on your own data
+
+1. Place GeoJSON files named `result_traffic_flow_hourly_YYYY_MM_DD.geojson`
+   under `data/input/<cityname>/`. Each feature must be a `LineString` with
+   hourly flow fields `flow_0 … flow_23` (or per-mode fields `<mode>_<hour>`,
+   which are combined using the `modal_weights` in `config.yaml`). The input
+   CRS is auto-detected (WGS84 or a projected CRS).
+2. Add a block under `cities:` in `config.yaml`:
+
+   ```yaml
+   cities:
+     mycity:
+       target_crs: null     # null = auto-pick a metric UTM zone; or e.g. EPSG:27700
+       dates: null          # null = use every date found on disk
+   ```
+
+3. Run the pipeline for that city:
+
+   ```bash
+   python main.py --city mycity
+   ```
 
 ## Outputs
 
 ```
 results/
 ├── <city>/
-│   ├── windows_config.json                       # bbox of each nested SF window
-│   ├── multi_scale/window<N>/<city>_<date>.json  # CV(L,h), H(L,h)
-│   ├── scaling/window<N>/<city>_<date>.json      # alpha_by_hour, beta_by_hour
-│   ├── stats/window<N>/<city>_<date>.json        # bootstrap CIs (optional)
-│   └── diagnostics/                              # written only with --viz
-├── cross_city_summary.csv                        # converged exponents (Table 2)
+│   ├── windows_config.json                         # bbox of each nested window
+│   ├── multi_scale/window<N>/<city>_<date>.json    # CV(L,h), H(L,h)
+│   ├── scaling/window<N>/<city>_<date>.json        # alpha_by_hour, beta_by_hour
+│   └── stats/window<N>/<city>_<date>.json          # bootstrap CIs (optional)
+├── cross_city_summary.csv                          # converged exponents (Table 2)
 └── cross_city_summary.json
 ```
 
-`cross_city_summary.csv` aggregates α and β over the converged windows
-(SF ≥ 0.4) and workday hours 08:00–15:59, reporting the per-city median,
-inter-quartile range, and full range — the values reported as Table 2 of
-the paper for London, Melbourne, and Los Angeles.
+`cross_city_summary.csv` aggregates `alpha` and `beta` over the converged
+windows (SF >= 0.4) and the workday hours 08:00-15:59, reporting the median,
+inter-quartile range, and full range per city. This is the table reported in
+the paper.
 
-## Process visualisation (`--viz`)
+## Method (one paragraph)
 
-Pass `--viz` and the pipeline writes diagnostic PNGs alongside the JSON
-outputs:
-
-```
-results/<city>/diagnostics/
-├── window<N>/<city>_<date>.png       # 6-panel per-(date, window) diagnostic
-└── <city>_convergence_heatmap.png    # 24 h × window median α/β heatmap
-```
-
-The 6-panel diagnostic shows, at hour 10 (matching Fig. 3a of the paper):
-the segment scatter with the SF window bbox overlaid; active-cell flow
-heatmaps at `L = 200 m` and `L = 1000 m`; log-log scatter of `CV(L)` and
-`H(L)` with the `[200, 1200] m` fit window shaded and the OLS line
-overlaid; and a text summary of bbox, segment count, and the fitted α,
-β, R² for that window. The per-city convergence heatmap shows the median
-α and β over all dates as a function of `(window_idx, hour)` — the
-converged regime (SF ≥ 0.4) occupies the upper four rows and should
-settle to similar values, while `window_idx = 1` (SF = 0.2) deviates.
-
-`--viz` is off by default and does not affect the numerics. It requires
-`matplotlib` and adds roughly a few seconds per window.
+For each city we tile the network bbox with regular grids of side
+`L in {10, 50, 100, ..., 10 000} m`, aggregate per-segment hourly flows into
+per-cell flows, and compute (a) the coefficient of variation `CV(L, h)`
+across active cells and (b) the degree-based Shannon entropy `H(L, h)` of
+the cell adjacency graph (8-connectivity, geometric-mean edge weights).
+Power laws `CV(L) ~ L^alpha` and `H(L) ~ L^beta` are fit by ordinary
+least squares in log-log space on the local window
+`L in [200, 1200] m`, capped by `0.25 * win_min_dim` to avoid finite-size
+artefacts at small windows. The fit is repeated for each combination of
+date, nested window (six relative-bbox sub-regions), and hour, and the
+exponents are aggregated over the converged windows (SF >= 0.4) and
+workday hours. A complete, detailed description of this procedure
+(pseudocode-level) is given in the **Methods** section of the manuscript.
 
 ## Reproducibility
 
-- All randomness flows through `random_seed: 42` in `config.yaml`.
-- The pipeline is idempotent at the per-task level: rerunning skips
-  finished work unless `--force` is passed.
-- `python tests/test_pipeline.py` is a ~30-second end-to-end smoke test
-  that runs one Melbourne date, one window, one hour, and asserts the
-  cross-city CSV is produced with finite values.
+All randomness is controlled by `random_seed: 42` in `config.yaml`.
+The pipeline is idempotent at the per-task level: rerunning skips finished
+work unless `--force` is passed.
+
+## License
+
+Released under the **MIT License** — see [`LICENSE`](LICENSE).
+Copyright (c) 2026 qiuchen lu.

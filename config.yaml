@@ -24,6 +24,9 @@ cities:
   losangeles:
     target_crs: null            # auto-detected (UTM 11N)
     dates: null
+  demo:
+    target_crs: null            # small bundled subset (Melbourne, cropped) for the demo
+    dates: null                 # one date in data/input/demo/
 
 # ---------------------------------------------------------------------------
 # Multi-scale analysis parameters
