@@ -9,10 +9,14 @@ end-to-end computation that yields the scaling exponents reported in the
 paper.
 
 - **Source repository:** https://github.com/viviRG2024/Finite-size-Convergence-of-Mobility-based-Resilience
-- **Data:** the full hourly traffic-flow GeoJSONs for all three cities are
-  included in this repository under `data/input/`. A small bundled subset for
-  the demo (a cropped slice of the Melbourne network, ~2.7 MB) lives in
-  `data/input/demo/`.
+- **Data:** only the small demo subset (a cropped slice of the Melbourne
+  network, ~2.7 MB) is bundled with the repository, under `data/input/demo/`.
+  The full hourly traffic-flow GeoJSONs for **London**, **Melbourne**, and
+  **Los Angeles** are too large to ship here and are hosted separately on
+  Google Drive:
+  <https://drive.google.com/drive/folders/1mcp3sbdLuMc3ytnTBnBsSR0VHAAQx8Fg?usp=drive_link>.
+  Download a city's folder and place it under `data/input/<city>/` to
+  reproduce the full results (see *Run (full reproduction)* below).
 
 ## Layout
 
@@ -29,7 +33,7 @@ clean_code/
 │   ├── analysis/scaling_fit.py     # local log-log fit, alpha and beta
 │   ├── analysis/statistical_tests.py  # bootstrap CI, permutation, KS
 │   └── utils/io.py                 # JSON helpers (numpy-aware)
-├── data/input/                # GeoJSON inputs (3 cities + demo subset)
+├── data/input/                # demo subset bundled; full city data via Google Drive
 ├── results/                   # written by main.py
 └── tests/test_pipeline.py     # one-minute smoke test
 ```
@@ -123,8 +127,22 @@ python tests/test_pipeline.py
 
 ## Run (full reproduction)
 
-Full pipeline on the three study cities (6 nested windows, 39 scales, 8
-workday hours):
+The full city datasets are not bundled with this repository. First download
+them from Google Drive and place each city's folder under `data/input/`:
+
+<https://drive.google.com/drive/folders/1mcp3sbdLuMc3ytnTBnBsSR0VHAAQx8Fg?usp=drive_link>
+
+```
+data/input/
+├── demo/         # bundled with the repo
+├── london/       # downloaded from Google Drive
+├── melbourne/    # downloaded from Google Drive
+└── losangeles/   # downloaded from Google Drive
+```
+
+Each folder holds the hourly GeoJSONs named
+`result_traffic_flow_hourly_YYYY_MM_DD.geojson`. Then run the full pipeline on
+the three study cities (6 nested windows, 39 scales, 8 workday hours):
 
 ```bash
 python main.py --city london --city melbourne --city losangeles
