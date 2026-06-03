@@ -162,28 +162,6 @@ python main.py --no-tests                            # skip bootstrap stage
 python main.py --force                               # recompute everything
 ```
 
-## Use on your own data
-
-1. Place GeoJSON files named `result_traffic_flow_hourly_YYYY_MM_DD.geojson`
-   under `data/input/<cityname>/`. Each feature must be a `LineString` with
-   hourly flow fields `flow_0 … flow_23` (or per-mode fields `<mode>_<hour>`,
-   which are combined using the `modal_weights` in `config.yaml`). The input
-   CRS is auto-detected (WGS84 or a projected CRS).
-2. Add a block under `cities:` in `config.yaml`:
-
-   ```yaml
-   cities:
-     mycity:
-       target_crs: null     # null = auto-pick a metric UTM zone; or e.g. EPSG:27700
-       dates: null          # null = use every date found on disk
-   ```
-
-3. Run the pipeline for that city:
-
-   ```bash
-   python main.py --city mycity
-   ```
-
 ## Outputs
 
 ```
