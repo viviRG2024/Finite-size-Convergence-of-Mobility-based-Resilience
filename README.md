@@ -227,4 +227,4 @@ work unless `--force` is passed.
 ## License
 
 Released under the **MIT License** — see [`LICENSE`](LICENSE).
-Copyright (c) 2026 qiuchen lu.
+Copyright (c) 2026 xuhui lin and qiuchen lu.
