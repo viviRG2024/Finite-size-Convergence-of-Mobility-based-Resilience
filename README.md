@@ -216,7 +216,3 @@ locations and numbers of stations and road segments).
 
 The code is released under the MIT licence (`LICENSE`). The processed data and Source Data are processed from the IUTF
 dataset and are released under CC BY 4.0 (`DATA_LICENCE.md`).
-
-## Citation
-
-If you use this code, please cite the paper (citation to be added on publication) and the IUTF dataset.
