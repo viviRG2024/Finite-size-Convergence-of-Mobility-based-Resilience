@@ -1,0 +1,1 @@
+Median over the 34 cities; study area = bounding box of the road file; f = SF^2 (SF = window side / side of the study area); shuffled = median over 10 shuffles of the 24 h station series.

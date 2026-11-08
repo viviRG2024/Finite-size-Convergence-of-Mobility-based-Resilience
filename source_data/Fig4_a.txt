@@ -1,0 +1,1 @@
+One-way ANOVA intraclass correlation of log station flows within square blocks (8 block origins averaged).

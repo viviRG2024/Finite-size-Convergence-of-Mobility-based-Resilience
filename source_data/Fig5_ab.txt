@@ -1,0 +1,1 @@
+Window error (P90 / tolerance) divided by its value at f = 0.5, per city and metric.

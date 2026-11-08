@@ -1,0 +1,1 @@
+Panel b: two random windows of the main analysis covering 10% of London (those at the 10th and 90th percentile of the deviation of sigma_z); window and whole-city values of sigma_z, and of CV and H on 500 m cells averaged over 32 grid origins; deviation in units of the tolerance (0.25 x IQR of the whole-city values).

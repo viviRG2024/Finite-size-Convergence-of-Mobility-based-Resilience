@@ -1,0 +1,22 @@
+{
+ "city": "bremen",
+ "reference_file": "result_traffic_flow_hourly_2016_09_19.geojson",
+ "n_files": 14,
+ "projected_input": false,
+ "lon0": 8.81554765,
+ "lat0": 53.0861732,
+ "road_bbox": [
+  -10881.160885493344,
+  -8636.755391407092,
+  10881.160885493462,
+  8636.755391407092
+ ],
+ "n_segments": 21564,
+ "n_sensor_segments": 266,
+ "sensor_bbox": [
+  -6189.228122350475,
+  -7357.443454301141,
+  6208.802950875498,
+  3933.333510237535
+ ]
+}

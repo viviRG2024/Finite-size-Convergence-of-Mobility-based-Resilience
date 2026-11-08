@@ -1,0 +1,22 @@
+{
+ "city": "vilnius",
+ "reference_file": "result_traffic_flow_hourly_2015_03_17.geojson",
+ "n_files": 2,
+ "projected_input": false,
+ "lon0": 25.26809905,
+ "lat0": 54.6796837,
+ "road_bbox": [
+  -4014.6940213477983,
+  -6079.424219148042,
+  4014.6940213477983,
+  6079.424219148042
+ ],
+ "n_segments": 4864,
+ "n_sensor_segments": 208,
+ "sensor_bbox": [
+  -1821.5100413843627,
+  -1223.1625618310065,
+  1890.890699883814,
+  3037.8523718573065
+ ]
+}

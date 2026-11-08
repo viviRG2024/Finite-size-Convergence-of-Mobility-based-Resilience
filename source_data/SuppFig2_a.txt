@@ -1,0 +1,1 @@
+Station positions and road segments per city are in the IUTF data; this table lists the counts shown.

@@ -1,0 +1,1 @@
+Weekdays used: non-holiday weekdays with >= 50% of stations valid, hours 07:00-19:59.

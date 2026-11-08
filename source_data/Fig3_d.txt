@@ -1,0 +1,1 @@
+Error of the network metric at the traffic diagnostic's critical coverage (log-log interpolation between levels), cities where that coverage is defined.

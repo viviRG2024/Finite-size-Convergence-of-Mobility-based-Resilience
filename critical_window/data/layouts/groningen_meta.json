@@ -1,0 +1,22 @@
+{
+ "city": "groningen",
+ "reference_file": "result_traffic_flow_hourly_2017_09_21.geojson",
+ "n_files": 2,
+ "projected_input": false,
+ "lon0": 6.58345695,
+ "lat0": 53.225691749999996,
+ "road_bbox": [
+  -3640.3375254072453,
+  -3253.7626390231712,
+  3640.337525407186,
+  3253.7626390239616
+ ],
+ "n_segments": 4451,
+ "n_sensor_segments": 28,
+ "sensor_bbox": [
+  -2654.0978958539627,
+  -1962.1393511997132,
+  798.5556065799178,
+  1213.5330678824441
+ ]
+}

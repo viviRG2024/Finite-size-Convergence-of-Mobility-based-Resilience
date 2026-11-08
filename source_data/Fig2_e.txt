@@ -1,0 +1,1 @@
+flag: ok = f* found; above = not within the tolerance below f = 0.9; below = within the tolerance from the smallest usable level; none = no usable level (too few stations). Median over the cities with a usable level, cities 'above' ranked above every found f*.

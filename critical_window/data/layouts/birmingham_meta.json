@@ -1,0 +1,22 @@
+{
+ "city": "birmingham",
+ "reference_file": "result_traffic_flow_hourly_2017_10_23.geojson",
+ "n_files": 12,
+ "projected_input": false,
+ "lon0": -1.8997407499999999,
+ "lat0": 52.4781309,
+ "road_bbox": [
+  -2702.8584283038163,
+  -3069.2622021453485,
+  2702.8584283038017,
+  3069.2622021461384
+ ],
+ "n_segments": 3527,
+ "n_sensor_segments": 45,
+ "sensor_bbox": [
+  -1475.2454477037381,
+  -1612.9374564505047,
+  1414.5076610898225,
+  1409.5783339651248
+ ]
+}

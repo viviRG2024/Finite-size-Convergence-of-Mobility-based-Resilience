@@ -1,0 +1,1 @@
+Fig. 1a (insets): Window error = 90th percentile of |window value - whole-city value| over the usable windows; tolerance = 0.25 x IQR of the whole-city values across the 34 cities.

@@ -1,0 +1,22 @@
+{
+ "city": "strasbourg",
+ "reference_file": "result_traffic_flow_hourly_2017_05_10.geojson",
+ "n_files": 25,
+ "projected_input": false,
+ "lon0": 7.7587685,
+ "lat0": 48.5945003,
+ "road_bbox": [
+  -5951.981694309867,
+  -5564.713312255024,
+  5951.981694309867,
+  5564.713312255024
+ ],
+ "n_segments": 6985,
+ "n_sensor_segments": 118,
+ "sensor_bbox": [
+  -3751.3434600138658,
+  -3567.225000691253,
+  2907.181544311539,
+  2521.5280671184123
+ ]
+}

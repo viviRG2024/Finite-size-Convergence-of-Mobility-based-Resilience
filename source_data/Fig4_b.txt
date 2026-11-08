@@ -1,0 +1,1 @@
+Smallest usable level: >= 25 usable windows (>= 20 stations each); side = sqrt(f) x short side of the study area. Correlation length: 1/e crossing of the empirical correlogram (first bin 25 m means shorter than 50 m).

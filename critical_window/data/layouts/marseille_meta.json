@@ -1,0 +1,22 @@
+{
+ "city": "marseille",
+ "reference_file": "result_traffic_flow_hourly_2017_06_01.geojson",
+ "n_files": 31,
+ "projected_input": false,
+ "lon0": 5.4222151499999995,
+ "lat0": 43.28891995,
+ "road_bbox": [
+  -9387.771491531079,
+  -7165.494366559349,
+  9387.771491531152,
+  7165.494366559349
+ ],
+ "n_segments": 14293,
+ "n_sensor_segments": 140,
+ "sensor_bbox": [
+  -5802.133831795851,
+  -5067.020812391919,
+  1391.8359202472586,
+  4099.234431579837
+ ]
+}

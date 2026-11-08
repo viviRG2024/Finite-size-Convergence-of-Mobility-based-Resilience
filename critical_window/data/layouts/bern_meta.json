@@ -1,0 +1,22 @@
+{
+ "city": "bern",
+ "reference_file": "result_traffic_flow_hourly_2016_10_24.geojson",
+ "n_files": 8,
+ "projected_input": false,
+ "lon0": 7.42262315,
+ "lat0": 46.948809,
+ "road_bbox": [
+  -6142.498627181918,
+  -3007.7824422847502,
+  6142.498627181918,
+  3007.78244228554
+ ],
+ "n_segments": 6267,
+ "n_sensor_segments": 249,
+ "sensor_bbox": [
+  -3258.844554585873,
+  -1911.292203904582,
+  4117.367757020765,
+  1741.0349470285025
+ ]
+}

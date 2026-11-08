@@ -1,0 +1,22 @@
+{
+ "city": "augsburg",
+ "reference_file": "result_traffic_flow_hourly_2017_05_08.geojson",
+ "n_files": 20,
+ "projected_input": false,
+ "lon0": 10.8947578,
+ "lat0": 48.36548985,
+ "road_bbox": [
+  -5137.346926504687,
+  -5733.77987199621,
+  5137.346926504556,
+  5733.779871995421
+ ],
+ "n_segments": 11561,
+ "n_sensor_segments": 365,
+ "sensor_bbox": [
+  -2940.950065291068,
+  -3039.232117478654,
+  3449.6052159068245,
+  3189.4029265840527
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "city": "rotterdam",
+ "reference_file": "result_traffic_flow_hourly_2017_09_21.geojson",
+ "n_files": 6,
+ "projected_input": false,
+ "lon0": 4.4731926,
+ "lat0": 51.9111874,
+ "road_bbox": [
+  -7584.008488107517,
+  -6170.937770180685,
+  7584.008488107517,
+  6170.937770179896
+ ],
+ "n_segments": 18613,
+ "n_sensor_segments": 118,
+ "sensor_bbox": [
+  -3776.953192061316,
+  -4733.973014578536,
+  6038.233258172012,
+  3668.065182714371
+ ]
+}

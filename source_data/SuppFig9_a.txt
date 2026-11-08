@@ -1,0 +1,1 @@
+z = (event value - mean of the comparison days) / SD of the comparison days; comparison days = dry weekdays of the same data block within 14 days; for comparison days, each day against the others (placebo). Flow: drop of the whole-city flow; occupancy: rise; speed index (flow / occupancy): drop. Clipped to [-4, 6] in the plot.

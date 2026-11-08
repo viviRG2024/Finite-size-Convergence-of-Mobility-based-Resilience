@@ -1,0 +1,22 @@
+{
+ "city": "hamburg",
+ "reference_file": "result_traffic_flow_hourly_2016_08_29.geojson",
+ "n_files": 105,
+ "projected_input": false,
+ "lon0": 9.975417199999999,
+ "lat0": 53.55813655,
+ "road_bbox": [
+  -5168.95771588138,
+  -3358.80863132036,
+  5168.957715881497,
+  3358.80863132036
+ ],
+ "n_segments": 7230,
+ "n_sensor_segments": 190,
+ "sensor_bbox": [
+  -1829.4334262212683,
+  -1745.5125707352695,
+  3280.7549491760988,
+  2008.585304556906
+ ]
+}

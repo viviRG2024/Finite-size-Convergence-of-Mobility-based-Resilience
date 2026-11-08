@@ -1,0 +1,1 @@
+90th percentile of |whole-city value(shifted grid) - whole-city value| over 50 random grid shifts, divided by the interquartile range of whole-city values across cities; tolerance = 0.25.

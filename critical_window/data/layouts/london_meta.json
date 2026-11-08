@@ -1,0 +1,22 @@
+{
+ "city": "london",
+ "reference_file": "result_traffic_flow_hourly_2015_05_15.geojson",
+ "n_files": 23,
+ "projected_input": false,
+ "lon0": -0.0916119,
+ "lat0": 51.5132123,
+ "road_bbox": [
+  -10163.594484750472,
+  -7266.998795550403,
+  10163.594484750472,
+  7266.998795550403
+ ],
+ "n_segments": 39768,
+ "n_sensor_segments": 2835,
+ "sensor_bbox": [
+  -8547.32002055059,
+  -5958.875779415386,
+  8861.77003999836,
+  4747.464313662361
+ ]
+}

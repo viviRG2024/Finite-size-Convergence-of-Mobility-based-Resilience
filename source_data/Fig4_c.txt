@@ -1,0 +1,1 @@
+Shuffled: whole station series permuted among stations (2,000 permutations), same windows.

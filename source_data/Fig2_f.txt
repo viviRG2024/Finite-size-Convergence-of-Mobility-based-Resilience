@@ -1,0 +1,1 @@
+Spearman rho between one random window per city and the whole-city values, median and 5th percentile over 1,000 draws (cities with a usable level).

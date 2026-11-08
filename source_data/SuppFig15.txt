@@ -1,0 +1,1 @@
+As Fig. 5d for the mean of log flows and the site CV. flag 'above' = above 0.9 (drawn at 0.95, open symbols); errors over the cities whose observed f* is found.

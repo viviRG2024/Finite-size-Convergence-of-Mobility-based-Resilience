@@ -1,0 +1,1 @@
+P90 over windows and events of |window slowdown - city-wide slowdown| / tolerance; tolerance = 0.25 x IQR of the city-wide slowdown over the events of the 11 cities with >= 3 events (0.024); median and quartiles over these cities (levels with >= 6 cities); sigma_z for the same cities.

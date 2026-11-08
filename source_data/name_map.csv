@@ -1,0 +1,75 @@
+kind,working_name,paper_name
+figure,Fig1a_right,Fig1a_right
+figure,Fig2_panels,Fig2
+figure,Fig3,Fig3
+figure,Fig4,Fig4
+figure,Fig5,Fig5
+figure,SuppFig9,SuppFig1
+figure,Fig1,SuppFig2
+figure,SuppFig1,SuppFig3
+figure,SuppFig4,SuppFig4
+figure,SuppFig13,SuppFig5
+figure,SuppFig2,SuppFig6
+figure,SuppFig3,SuppFig7
+figure,SuppFig11,SuppFig8
+figure,SuppFig10,SuppFig9
+figure,SuppFig6,SuppFig10
+figure,SuppFig7,SuppFig11
+figure,SuppFig12,SuppFig12
+figure,Fig6,SuppFig13
+figure,SuppFig5,SuppFig14
+figure,SuppFig8,SuppFig15
+source data,Fig1_c,Fig1_a_windows
+source data,Fig1_c,SuppFig2_c
+source data,Fig1_d,SuppFig2_d
+source data,Fig1_a,Fig1_c
+source data,Fig1_a,SuppFig2_a
+source data,Fig1_b,SuppFig2_b
+source data,Fig2_London_windows,Fig2_a
+source data,Fig2_London_two_windows,Fig2_b
+source data,Fig2_a,Fig2_c
+source data,Fig2_b,Fig2_d
+source data,Fig2_c,Fig2_e
+source data,Fig2_d,Fig2_f
+source data,Fig3_a,Fig3_a
+source data,Fig3_b,Fig3_b
+source data,Fig3_c,Fig3_c
+source data,Fig3_d,Fig3_d
+source data,Fig4_a,Fig4_a
+source data,Fig4_b,Fig4_b
+source data,Fig4_c,Fig4_c
+source data,Fig4_d,Fig4_d
+source data,Fig5_ab,Fig5_ab
+source data,Fig5_c,Fig5_c
+source data,Fig5_d,Fig5_d
+source data,Fig5_e,Fig5_e
+source data,SuppFig9,SuppFig1
+source data,SuppFig1,SuppFig3
+source data,SuppFig4_a,SuppFig4_a
+source data,SuppFig4_b,SuppFig4_b
+source data,SuppFig13_a,SuppFig5_a
+source data,SuppFig13_bc,SuppFig5_bc
+source data,SuppFig2,SuppFig6
+source data,SuppFig3_a,SuppFig7_a
+source data,SuppFig3_b,SuppFig7_b
+source data,SuppFig3_c,SuppFig7_c
+source data,SuppFig11,SuppFig8
+source data,SuppFig10_a,SuppFig9_a
+source data,SuppFig10_b,SuppFig9_b
+source data,SuppFig10_c,SuppFig9_c
+source data,SuppFig10_d,SuppFig9_d
+source data,SuppFig10_ef,SuppFig9_ef
+source data,SuppFig6,SuppFig10
+source data,SuppFig7,SuppFig11
+source data,SuppFig12_ab,SuppFig12_ab
+source data,SuppFig12_c,SuppFig12_c
+source data,SuppFig12_fits,SuppFig12_fits
+source data,Fig6_a,SuppFig13_a
+source data,Fig6_b,SuppFig13_b
+source data,Fig6_c,SuppFig13_c
+source data,Fig6_d,SuppFig13_d
+source data,SuppFig5_ab,SuppFig14_ab
+source data,SuppFig5_c,SuppFig14_c
+source data,SuppFig5_d,SuppFig14_d
+source data,SuppFig8,SuppFig15
+source data,Fig1_d (sigma_z rows),Fig1_a_error

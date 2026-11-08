@@ -1,0 +1,1 @@
+Window corners in UTM metres (EPSG 32632); f = window area / study area.

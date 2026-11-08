@@ -1,0 +1,22 @@
+{
+ "city": "melbourne",
+ "reference_file": "result_traffic_flow_hourly_2018_02_12.geojson",
+ "n_files": 15,
+ "projected_input": false,
+ "lon0": 144.96153045,
+ "lat0": -37.809604750000005,
+ "road_bbox": [
+  -4776.000655870808,
+  -4010.5229965686403,
+  4776.000655870808,
+  4010.5229965694302
+ ],
+ "n_segments": 7838,
+ "n_sensor_segments": 361,
+ "sensor_bbox": [
+  -1723.05034289131,
+  -2178.9857419480118,
+  2798.708107048341,
+  1690.6500301001386
+ ]
+}

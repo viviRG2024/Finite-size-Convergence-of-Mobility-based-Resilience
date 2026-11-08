@@ -1,0 +1,22 @@
+{
+ "city": "speyer",
+ "reference_file": "result_traffic_flow_hourly_2016_09_19.geojson",
+ "n_files": 14,
+ "projected_input": false,
+ "lon0": 8.43302255,
+ "lat0": 49.33097365,
+ "road_bbox": [
+  -2886.013078917827,
+  -3947.942405413507,
+  2886.0130789176983,
+  3947.942405413507
+ ],
+ "n_segments": 2555,
+ "n_sensor_segments": 115,
+ "sensor_bbox": [
+  -1322.108493543736,
+  -2532.2415909053675,
+  793.9783888603492,
+  2043.3342031892137
+ ]
+}

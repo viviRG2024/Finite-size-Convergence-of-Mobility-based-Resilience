@@ -1,0 +1,1 @@
+Spearman rho across the 34 cities between the metric in one random window per city (one of the 20 windows per level) and its whole-city value, 1000 draws: median and 5th percentile; 'f*' = each city's own critical coverage (first level at or above it; 0.9 when above 0.9). sigma_z from E8 (31 cities).

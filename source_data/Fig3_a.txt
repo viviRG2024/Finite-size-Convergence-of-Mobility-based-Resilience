@@ -1,0 +1,1 @@
+Relative difference (window - city)/city of robustness, and (city - window)/city of efficiency loss, in %; median and quartiles over cities (levels with >= 17 cities). Signed per-window values: out/e4b/levels.csv (rel_bias).

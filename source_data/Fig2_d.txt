@@ -1,0 +1,1 @@
+Median and quartiles over the cities with a usable level (shown where >= 17 cities).

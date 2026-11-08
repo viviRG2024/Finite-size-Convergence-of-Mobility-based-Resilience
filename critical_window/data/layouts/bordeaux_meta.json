@@ -1,0 +1,22 @@
+{
+ "city": "bordeaux",
+ "reference_file": "result_traffic_flow_hourly_2016_11_21.geojson",
+ "n_files": 7,
+ "projected_input": false,
+ "lon0": -0.60147215,
+ "lat0": 44.8604663,
+ "road_bbox": [
+  -5929.469591383701,
+  -8103.819610863355,
+  5929.469591383693,
+  8103.819610864145
+ ],
+ "n_segments": 7724,
+ "n_sensor_segments": 252,
+ "sensor_bbox": [
+  -3529.3219404937145,
+  -6603.899620211287,
+  5264.276831283257,
+  3588.7504008284122
+ ]
+}

@@ -1,0 +1,1 @@
+Centres: peaks of the flow-weighted station density (>= 50% of the highest), merged within 2 km. P90 errors per group of windows (>= 5 windows per group); median of the ratio over cities.

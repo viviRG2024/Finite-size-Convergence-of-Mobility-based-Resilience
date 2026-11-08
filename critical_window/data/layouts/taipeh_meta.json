@@ -1,0 +1,22 @@
+{
+ "city": "taipeh",
+ "reference_file": "result_traffic_flow_hourly_2017_09_18.geojson",
+ "n_files": 14,
+ "projected_input": false,
+ "lon0": 121.5298521,
+ "lat0": 25.0509914,
+ "road_bbox": [
+  -9073.926114892927,
+  -6301.703184535031,
+  9073.926114892927,
+  6301.703184534636
+ ],
+ "n_segments": 13365,
+ "n_sensor_segments": 304,
+ "sensor_bbox": [
+  -4269.411458373133,
+  -4415.8712527414955,
+  4027.975195386973,
+  2549.640516164227
+ ]
+}

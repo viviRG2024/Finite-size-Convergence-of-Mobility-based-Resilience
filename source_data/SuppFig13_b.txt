@@ -1,0 +1,1 @@
+Median and quartiles over cities (levels with >= 17 cities); each grid variant with its own tolerance (0.25 x IQR of its whole-city values).

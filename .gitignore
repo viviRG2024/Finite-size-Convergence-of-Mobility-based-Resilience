@@ -1,9 +1,6 @@
 __pycache__/
-*.pyc
-*.pyo
-results/
-.pytest_cache/
-*.tmp
-/data/input/losangeles
-/data/input/melbourne
-/data/input/london
+*.py[cod]
+data/input/
+critical_window/out/
+.DS_Store
+Thumbs.db

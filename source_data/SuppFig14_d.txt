@@ -1,0 +1,1 @@
+Share of cities whose centred-window CV_temp(beta) stays at or below the threshold from that coverage on; f = SF^2.

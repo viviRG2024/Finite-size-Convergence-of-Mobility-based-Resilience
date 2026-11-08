@@ -1,0 +1,1 @@
+flag: ok = f* found; above = not within the tolerance below f = 0.9. Median over all cities, cities 'above' ranked above every found f*.

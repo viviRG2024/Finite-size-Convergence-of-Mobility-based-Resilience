@@ -1,0 +1,1 @@
+Local slope of ln H on ln L between consecutive grid sizes, median and quartiles over cities (sizes with >= 17 cities).

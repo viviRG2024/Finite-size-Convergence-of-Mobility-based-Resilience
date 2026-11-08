@@ -1,0 +1,22 @@
+{
+ "city": "constance",
+ "reference_file": "result_traffic_flow_hourly_2017_02_13.geojson",
+ "n_files": 7,
+ "projected_input": false,
+ "lon0": 9.162147650000001,
+ "lat0": 47.6890664,
+ "road_bbox": [
+  -3932.0586617624754,
+  -4360.337159229763,
+  3932.058661762342,
+  4360.337159229763
+ ],
+ "n_segments": 2905,
+ "n_sensor_segments": 72,
+ "sensor_bbox": [
+  -1738.7501104878747,
+  -3474.2057736357,
+  3580.16738536415,
+  773.5599124407626
+ ]
+}

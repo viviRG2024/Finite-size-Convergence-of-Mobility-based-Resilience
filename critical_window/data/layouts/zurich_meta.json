@@ -1,0 +1,22 @@
+{
+ "city": "zurich",
+ "reference_file": "result_traffic_flow_hourly_2015_10_26.geojson",
+ "n_files": 7,
+ "projected_input": false,
+ "lon0": 8.52349855,
+ "lat0": 47.36847025,
+ "road_bbox": [
+  -7174.854506882024,
+  -8045.6701436555595,
+  7174.854506882158,
+  8045.6701436555595
+ ],
+ "n_segments": 10184,
+ "n_sensor_segments": 514,
+ "sensor_bbox": [
+  -4417.568823222653,
+  -4030.091940751292,
+  5283.411006676644,
+  6004.906465479497
+ ]
+}

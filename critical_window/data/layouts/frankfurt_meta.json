@@ -1,0 +1,22 @@
+{
+ "city": "frankfurt",
+ "reference_file": "result_traffic_flow_hourly_2016_12_21.geojson",
+ "n_files": 1,
+ "projected_input": false,
+ "lon0": 8.663655550000001,
+ "lat0": 50.1050053,
+ "road_bbox": [
+  -1701.772120787106,
+  -1788.3615949042685,
+  1701.7721207869793,
+  1788.3615949034781
+ ],
+ "n_segments": 1369,
+ "n_sensor_segments": 46,
+ "sensor_bbox": [
+  -550.9236333332179,
+  -939.3093207649057,
+  897.7220487638759,
+  787.9505775512359
+ ]
+}

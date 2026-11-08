@@ -1,0 +1,1 @@
+Panel a: windows of London covering 2%-100% of the study area, sharing one anchor point (the median station coordinates) for illustration; UTM coordinates (m) and number of stations in each window.

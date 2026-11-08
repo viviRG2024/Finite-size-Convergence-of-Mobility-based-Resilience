@@ -1,0 +1,22 @@
+{
+ "city": "wolfsburg",
+ "reference_file": "result_traffic_flow_hourly_2016_09_19.geojson",
+ "n_files": 14,
+ "projected_input": false,
+ "lon0": 10.78906225,
+ "lat0": 52.42841145,
+ "road_bbox": [
+  -10026.90841982784,
+  -5484.669533748584,
+  10026.90841982772,
+  5484.669533749375
+ ],
+ "n_segments": 6552,
+ "n_sensor_segments": 74,
+ "sensor_bbox": [
+  -5044.47167656565,
+  -1573.103486883022,
+  4009.999826786517,
+  1462.2510463472277
+ ]
+}

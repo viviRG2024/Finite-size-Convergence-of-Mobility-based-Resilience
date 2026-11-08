@@ -1,0 +1,1 @@
+Median over cities of the SD of the window beta (median over 24 h) across 20 random windows; f = SF^2.

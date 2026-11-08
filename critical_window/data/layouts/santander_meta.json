@@ -1,0 +1,22 @@
+{
+ "city": "santander",
+ "reference_file": "result_traffic_flow_hourly_2016_06_17.geojson",
+ "n_files": 11,
+ "projected_input": false,
+ "lon0": -3.8325584499999996,
+ "lat0": 43.4608919,
+ "road_bbox": [
+  -4758.674500469807,
+  -2720.9102547901884,
+  4758.674500469771,
+  2720.9102547901884
+ ],
+ "n_segments": 4198,
+ "n_sensor_segments": 166,
+ "sensor_bbox": [
+  -2614.0434381300556,
+  -1168.0845498391648,
+  3533.0395553743756,
+  1682.1769649852974
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "city": "losangeles",
+ "reference_file": "result_traffic_flow_hourly_2017_10_02.geojson",
+ "n_files": 6,
+ "projected_input": false,
+ "lon0": -118.26248724999999,
+ "lat0": 34.0183363,
+ "road_bbox": [
+  -8574.049619032323,
+  -8502.86539529762,
+  8574.049619031011,
+  8502.86539529762
+ ],
+ "n_segments": 9774,
+ "n_sensor_segments": 1165,
+ "sensor_bbox": [
+  -4147.35212648735,
+  -2173.704048791913,
+  3000.1149935690955,
+  5912.769666021536
+ ]
+}

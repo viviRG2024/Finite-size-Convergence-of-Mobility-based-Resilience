@@ -1,0 +1,1 @@
+beta = slope of log H on log grid size over 200-1000 m (17 grid sizes) for the whole study area; shuffled = median over 200 permutations of the station flows; equal = every station given the same flow.

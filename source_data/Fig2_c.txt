@@ -1,0 +1,1 @@
+sigma_z of each usable random window minus the whole-city value, divided by the tolerance (0.0365).

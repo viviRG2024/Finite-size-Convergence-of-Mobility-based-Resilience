@@ -1,0 +1,22 @@
+{
+ "city": "innsbruck",
+ "reference_file": "result_traffic_flow_hourly_2017_04_03.geojson",
+ "n_files": 30,
+ "projected_input": false,
+ "lon0": 11.401858449999999,
+ "lat0": 47.25150705,
+ "road_bbox": [
+  -3532.7044948000225,
+  -4428.438586118616,
+  3532.7044948001567,
+  4428.438586118616
+ ],
+ "n_segments": 2780,
+ "n_sensor_segments": 12,
+ "sensor_bbox": [
+  -2032.7645925578422,
+  508.1314939955879,
+  618.25791173532,
+  3226.856209485069
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "city": "munich",
+ "reference_file": "result_traffic_flow_hourly_2017_02_14.geojson",
+ "n_files": 2,
+ "projected_input": false,
+ "lon0": 11.565481649999999,
+ "lat0": 48.147055,
+ "road_bbox": [
+  -10978.683528940985,
+  -9711.4780808803,
+  10978.683528941116,
+  9711.4780808803
+ ],
+ "n_segments": 37365,
+ "n_sensor_segments": 263,
+ "sensor_bbox": [
+  -7128.9034931622355,
+  -6119.1038128801865,
+  7772.3572135118875,
+  6054.741135237103
+ ]
+}

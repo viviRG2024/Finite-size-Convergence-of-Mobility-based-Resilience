@@ -1,0 +1,1 @@
+sigma_z f* (open symbols: above 0.9, drawn at 0.95) against the number of stations and the weekdays used.

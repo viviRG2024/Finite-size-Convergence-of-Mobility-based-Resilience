@@ -1,0 +1,43 @@
+metric,comparison,f,ratio_median,cities
+sd_log,main centre / no centre,0.075,0.5601254221687029,12
+sd_log,main centre / no centre,0.1,0.7279759328265332,17
+sd_log,main centre / no centre,0.15,0.5421403805074994,18
+sd_log,main centre / no centre,0.2,0.7109853143855425,18
+sd_log,main centre / no centre,0.25,0.8279791027579011,11
+sd_log,secondary only / main centre (>= 2 centres),0.1,1.338084133355815,13
+sd_log,secondary only / main centre (>= 2 centres),0.15,1.6139082497620094,14
+sd_log,secondary only / main centre (>= 2 centres),0.2,1.1656748388034093,16
+sd_log,secondary only / main centre (>= 2 centres),0.25,0.9636912241699758,18
+sd_log,secondary only / main centre (>= 2 centres),0.3,1.230957485470128,17
+sd_log,secondary only / main centre (>= 2 centres),0.35,1.2088665954246114,16
+sd_log,secondary only / main centre (>= 2 centres),0.4,1.0760852611055522,13
+sd_log,secondary only / main centre (>= 2 centres),0.45,1.2006905542092627,13
+sd_log,secondary only / main centre (>= 2 centres),0.5,1.413375048336677,9
+cv,main centre / no centre,0.075,0.6503350143981528,12
+cv,main centre / no centre,0.1,0.955856311844839,17
+cv,main centre / no centre,0.15,0.9926597014603024,18
+cv,main centre / no centre,0.2,0.888508536054274,18
+cv,main centre / no centre,0.25,1.0029543670194847,11
+cv,secondary only / main centre (>= 2 centres),0.1,0.514280895682402,13
+cv,secondary only / main centre (>= 2 centres),0.15,0.9221027448570728,14
+cv,secondary only / main centre (>= 2 centres),0.2,0.9726579580606858,16
+cv,secondary only / main centre (>= 2 centres),0.25,0.8986130187762252,18
+cv,secondary only / main centre (>= 2 centres),0.3,0.7895158456141943,17
+cv,secondary only / main centre (>= 2 centres),0.35,0.9069321154455487,16
+cv,secondary only / main centre (>= 2 centres),0.4,0.9977860740066296,13
+cv,secondary only / main centre (>= 2 centres),0.45,1.0126895068015187,13
+cv,secondary only / main centre (>= 2 centres),0.5,1.14076191732885,9
+hn,main centre / no centre,0.075,1.0111454617030922,12
+hn,main centre / no centre,0.1,1.0222352052454242,17
+hn,main centre / no centre,0.15,1.0559284693253617,18
+hn,main centre / no centre,0.2,1.054560623718309,18
+hn,main centre / no centre,0.25,1.2449863001796349,11
+hn,secondary only / main centre (>= 2 centres),0.1,1.0854715196882825,13
+hn,secondary only / main centre (>= 2 centres),0.15,0.9610646857557446,14
+hn,secondary only / main centre (>= 2 centres),0.2,1.0398766438590488,16
+hn,secondary only / main centre (>= 2 centres),0.25,0.830019595305641,18
+hn,secondary only / main centre (>= 2 centres),0.3,0.8434856606878921,17
+hn,secondary only / main centre (>= 2 centres),0.35,0.9097452214270244,16
+hn,secondary only / main centre (>= 2 centres),0.4,0.8356854045862523,13
+hn,secondary only / main centre (>= 2 centres),0.45,0.8584030960912921,13
+hn,secondary only / main centre (>= 2 centres),0.5,0.981330530667444,9

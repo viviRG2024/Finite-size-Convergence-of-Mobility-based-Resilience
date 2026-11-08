@@ -1,0 +1,22 @@
+{
+ "city": "kassel",
+ "reference_file": "result_traffic_flow_hourly_2016_08_29.geojson",
+ "n_files": 6,
+ "projected_input": false,
+ "lon0": 9.44737225,
+ "lat0": 51.3112232,
+ "road_bbox": [
+  -9789.370211668966,
+  -6039.5051853446475,
+  9789.370211668842,
+  6039.505185343857
+ ],
+ "n_segments": 10394,
+ "n_sensor_segments": 234,
+ "sensor_bbox": [
+  -1492.52668758462,
+  -4630.695288808747,
+  6966.545958317028,
+  3976.57884507623
+ ]
+}

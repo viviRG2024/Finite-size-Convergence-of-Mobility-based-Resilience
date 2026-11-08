@@ -1,0 +1,1 @@
+Overlap: mean over window pairs of the shared area / window area. Tiles: m x m non-overlapping windows (m = floor(1/sqrt f)) with >= 20 stations; ratio of P90 errors, median over cities with >= 2 tiles.

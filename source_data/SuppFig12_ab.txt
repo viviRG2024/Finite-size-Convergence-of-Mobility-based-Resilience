@@ -1,0 +1,1 @@
+Panels a and b. Whole study area, station flows (weekday daytime means), one grid origin at the corner of the study area, 39 grid sizes from 10 m to 10 km; n_cells = cells with flow; n_nodes = cells with flow that have at least one neighbouring cell with flow, i.e. the nodes of the adjacency graph on which H is computed (panel b: ln n_nodes).

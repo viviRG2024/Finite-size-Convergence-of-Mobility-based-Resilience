@@ -1,0 +1,1 @@
+Per city (>= 3 events): f* of the city-wide slowdown (flag above = not within tolerance below 0.9, drawn at 0.95), error at f = 0.5 in tolerance units, f* computed from it (b = 0.7), fitted exponent b and R^2 of the coverage law, f* of sigma_z, and the slowdown error at the sigma_z f* in tolerance units.

@@ -1,0 +1,1 @@
+One row per rain event (ERA5 >= 0.5 mm/h over the study area, 07:00-19:59 of a weekday). Lv = 1 - (sum flow / sum occupancy) / (the same on the comparison days); recovery_h = hours after the rain until the hourly Lv is back below the 95th percentile of the comparison days (detectable events; empty = not reached by 20:00).

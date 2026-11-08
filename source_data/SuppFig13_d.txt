@@ -1,0 +1,1 @@
+D = box-counting dimension over 200-1000 m (16 grid origins) of station positions (D_station) and of road lines (D_road, points every 20 m); beta_geo = -D_station / mean ln(number of active cells). Spearman D_station vs D_road over the 34 cities: 0.11.

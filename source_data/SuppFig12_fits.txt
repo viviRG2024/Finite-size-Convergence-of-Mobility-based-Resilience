@@ -1,0 +1,1 @@
+Per city: one power law against two joined at a break (least squares in log-log, BIC); dBIC > 10 = two segments clearly better.

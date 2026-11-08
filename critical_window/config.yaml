@@ -1,0 +1,65 @@
+# Configuration of the analysis pipeline.
+# Paths are relative to the repository root (the folder that contains critical_window/).
+
+paths:
+  iutfd_dir: data/input/IUTFD
+  out_dir: critical_window/out
+
+x0:
+  # time window of the main analysis (local time): 07:00-19:59 -> 13 hours
+  daytime_start_hour: 7
+  daytime_end_hour: 20
+  # an hour is valid if >= 75% of the expected intervals are valid (9/12 for 5-min, 15/20 for 3-min)
+  hour_min_valid_frac: 0.75
+  # a day is valid if >= 90% of the 13 daytime hours are valid (12/13); daily total = mean valid hour x 13
+  day_min_valid_frac: 0.90
+  # detectors whose coordinates lie within this distance are merged into one station (single linkage)
+  station_merge_m: 10.0
+  # interval flows above this rate per lane are physically impossible (1 vehicle per second)
+  max_rate_per_lane_vehh: 3600
+  # per-station outlier rule on weekday totals: |x - median| > k * 1.4826 * MAD
+  outlier_mad_k: 5.0
+  outlier_min_days: 5
+  # a weekday counts for a city if >= this share of its stations are valid on that day
+  city_day_min_station_frac: 0.5
+  # a station counts as valid if it is valid on >= this share of the city's weekdays
+  station_min_day_frac: 0.5
+  # inclusion rules (main, sensitivity)
+  n_min_main: 50
+  n_min_sensitivity: 100
+  min_weekdays: 5
+  # rainfall inventory (ERA5 total_precipitation, metres per hour ending at local_time)
+  rain_thresholds_mmh: [0.2, 0.5, 1.0]
+  rain_event_gap_h: 1
+  # road-network inventory: endpoints closer than this are the same node
+  network_snap_m: 1.0
+  # rows per batch when streaming the 5-min parquet files (lower it if memory is tight)
+  batch_rows: 4000000
+
+main:
+  # main analysis
+  f_grid: [0.01, 0.02, 0.03, 0.05, 0.075, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.60, 0.70, 0.80, 0.90, 1.0]
+  n_random: 50
+  n_w: 20
+  min_usable_windows: 25
+  grid_m: 500
+  n_perm: 2000
+  n_perm_exponents: 200
+  n_n2: 200
+  n_n3: 200
+  n_boot: 1000
+  n_boot_exponents: 200
+  tol_frac: 0.25
+  stat_quantile: 0.9
+  xi_ident_frac: 0.1666667
+  exponent_min_short_m: 4000
+  exponent_min_f: 0.25
+  stuck_run_hours: 6
+  h1_levels: 3
+  alpha: 0.05
+  rank_reps: 1000
+  centre_grid_m: 100
+  centre_peak_frac: 0.5
+  centre_min_bandwidth_m: 250
+  primary_probes: [cv500, hn500]
+  probes: [cv500, hn500, sd_log, mean_log, site_cv]

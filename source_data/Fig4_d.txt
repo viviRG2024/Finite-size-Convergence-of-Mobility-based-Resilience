@@ -1,0 +1,1 @@
+Broken-stick vs smooth model of the window error (Delta BIC), p value against 200 simulated smooth fields (N2) on the same layout.

@@ -1,0 +1,22 @@
+{
+ "city": "utrecht",
+ "reference_file": "result_traffic_flow_hourly_2017_06_12.geojson",
+ "n_files": 4,
+ "projected_input": false,
+ "lon0": 5.1157620999999995,
+ "lat0": 52.09692905,
+ "road_bbox": [
+  -5755.250042584289,
+  -6219.413265408095,
+  5755.25004258435,
+  6219.413265408095
+ ],
+ "n_segments": 10142,
+ "n_sensor_segments": 283,
+ "sensor_bbox": [
+  -2878.5200214649085,
+  -4135.689738634169,
+  2990.716585360946,
+  2661.593934207951
+ ]
+}

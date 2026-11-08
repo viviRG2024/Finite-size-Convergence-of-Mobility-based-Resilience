@@ -1,0 +1,22 @@
+{
+ "city": "manchester",
+ "reference_file": "result_traffic_flow_hourly_2017_09_08.geojson",
+ "n_files": 28,
+ "projected_input": false,
+ "lon0": -2.2292023,
+ "lat0": 53.4831775,
+ "road_bbox": [
+  -3383.4211239877386,
+  -2796.3894752522388,
+  3383.4211239877386,
+  2796.389475253029
+ ],
+ "n_segments": 3765,
+ "n_sensor_segments": 92,
+ "sensor_bbox": [
+  -2747.7657028556437,
+  -1054.1800161510712,
+  1207.2953928009908,
+  1119.8150743846793
+ ]
+}
