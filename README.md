@@ -1,7 +1,7 @@
 # Urban resilience quantification stabilises beyond a critical observation window — analysis code
 
 This repository contains the code, the configuration and the Source Data for the paper *Urban resilience quantification
-stabilises beyond a critical observation window* (under review at Nature Communications). The processed data and the
+stabilises beyond a critical observation window*. The processed data and the
 per-city results of every analysis stage are attached to the GitHub release as `processed_results.zip`.
 
 The analysis asks how much of a city must be observed for a measurement to represent the whole city. For each of 34
